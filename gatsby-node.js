@@ -8,11 +8,15 @@
 
 // create slug fields
 const { createFilePath } = require("gatsby-source-filesystem")
+const limax = require("limax")
+const moment = require("moment")
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type == "MarkdownRemark") {
-    const baseSlug = createFilePath({ node, getNode, basePath: "posts" })
-    const slug = `/posts${baseSlug}`
+		const baseSlug = createFilePath({ node, getNode, basePath: "content/posts", trailingSlash: false})
+		const postDate = moment(node.frontmatter.date);
+		const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${limax(baseSlug, {tone: false})}/`
+		console.log(slug)
     createNodeField({
       node,
       name: "slug",
