@@ -6,7 +6,6 @@ import SEO from "../components/seo"
 import limax from "limax"
 
 export default ({ data }) => {
-	console.log(data)
   const slugFunc = category => limax(category, { tone: false })
   const categories = data.allMdx.categories.map(({ fieldValue, totalCount }) => {
     const slug = slugFunc(fieldValue)

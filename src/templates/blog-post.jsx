@@ -7,7 +7,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import "katex/dist/katex.min.css"
 
 export default function BlogPost({ data }) {
-	console.log(data)
   const post = data.mdx
   return (
     <Layout>
