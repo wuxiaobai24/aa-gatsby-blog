@@ -159,3 +159,17 @@ a:hover {
 .handing-font {
   font-family: "Short Stack";
 }
+
+/* for code highlight */
+:not(pre) > code[class*="language-"]{
+  background-color: white;
+  color: #444;
+}
+
+:not(pre) > code[class*="language-"]::before{
+  content: '`';
+}
+
+:not(pre) > code[class*="language-"]::after{
+  content: '`';
+}
