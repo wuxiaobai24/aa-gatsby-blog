@@ -13,7 +13,7 @@ const moment = require("moment")
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   const slugFunc = slug => limax(slug, { tone: false })
-  if (node.internal.type == "MarkdownRemark") {
+  if (node.internal.type == "Mdx") {
     const baseSlug = createFilePath({
       node,
       getNode,
@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMdx {
         totalCount
         edges {
           node {
@@ -92,8 +92,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  const posts = result.data.allMarkdownRemark.edges
-  const { tags, categories } = result.data.allMarkdownRemark
+  const posts = result.data.allMdx.edges
+  const { tags, categories } = result.data.allMdx
 
   // create blog post
   posts.forEach(({ node }) => {

@@ -7,7 +7,7 @@ import limax from "limax"
 
 export default ({ data }) => {
   const slugFunc = tag => limax(tag, { tone: false })
-  const tags = data.allMarkdownRemark.tags.map(({ fieldValue, totalCount }) => {
+  const tags = data.allMdx.tags.map(({ fieldValue, totalCount }) => {
     const slug = slugFunc(fieldValue)
     return (
       <div className="block-inline m-4 bg-blue-300" key={slug}>
@@ -27,7 +27,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allMarkdownRemark {
+    allMdx {
       tags: group(field: frontmatter___tags) {
 				fieldValue
 				totalCount

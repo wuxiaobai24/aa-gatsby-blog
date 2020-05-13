@@ -44,9 +44,19 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-page-creator`,
       options: {
-        plugins: [
+        path: `${__dirname}/content/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+        defaultLayouts: {
+          default: require.resolve("./src/components/layout.js"),
+        },
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -58,7 +68,7 @@ module.exports = {
           // for latex
           `gatsby-remark-katex`,
           // for copy file
-          `gatsby-remark-copy-linked-files`
+          `gatsby-remark-copy-linked-files`,
         ],
       },
     },
