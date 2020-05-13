@@ -14,11 +14,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`, 
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'posts', 
+        name: "posts",
         path: `${__dirname}/content/posts`,
-      }
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -39,23 +39,29 @@ module.exports = {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
-          families: ['Short Stack']
-        }
-      }
+          families: ["Short Stack"],
+        },
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`, 
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 600,
-            }
-          }
-        ]
-      }
-    }
+            },
+          },
+          // for code highlight
+          `gatsby-remark-prismjs`,
+          // for latex
+          `gatsby-remark-katex`,
+          // for copy file
+          `gatsby-remark-copy-linked-files`
+        ],
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
