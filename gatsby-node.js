@@ -6,12 +6,13 @@
 
 // You can delete this file if you're not using it
 
-// create slug ,sort-tag, fields
+// create slug ,sortTags and sortCategories fields
 const { createFilePath } = require("gatsby-source-filesystem")
 const limax = require("limax")
 const moment = require("moment")
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+  const slugFunc = slug => limax(slug, { tone: false })
   if (node.internal.type == "MarkdownRemark") {
     const baseSlug = createFilePath({
       node,
@@ -20,13 +21,27 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       trailingSlash: false,
     })
     const postDate = moment(node.frontmatter.date)
-    const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${limax(baseSlug, {
-      tone: false,
-    })}/`
+    const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${slugFunc(
+      baseSlug
+    )}/`
     createNodeField({
       node,
       name: "slug",
       value: slug,
+    })
+
+    const { tags, categories } = node.frontmatter
+    const sortTags = tags.map(slugFunc)
+    const sortCategories = categories.map(slugFunc)
+    createNodeField({
+      node,
+      name: "sortTags",
+      value: sortTags,
+    })
+    createNodeField({
+      node,
+      name: "sortCategories",
+      value: sortCategories,
     })
   }
 }
@@ -51,10 +66,10 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        tags: group(field: frontmatter___tags) {
+        tags: group(field: fields___sortCategories) {
           fieldValue
         }
-        categories: group(field: frontmatter___categories) {
+        categories: group(field: fields___sortCategories) {
           fieldValue
         }
       }
@@ -73,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // create tag archive
   result.data.allMarkdownRemark.tags.forEach(({ fieldValue }) => {
     createPage({
-      path: `/tags/${limax(fieldValue, {tone: false})}/`,
+      path: `/tags/${fieldValue}/`,
       component: tagTemplate,
       context: {
         tag: fieldValue,
@@ -83,7 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // create category archive
   result.data.allMarkdownRemark.categories.forEach(({ fieldValue }) => {
     createPage({
-      path: `/categories/${limax(fieldValue, {tone: false})}/`,
+      path: `/categories/${fieldValue}/`,
       component: categoryTemplate,
       context: {
         category: fieldValue,
