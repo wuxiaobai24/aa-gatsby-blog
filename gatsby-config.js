@@ -57,6 +57,8 @@ module.exports = {
           `gatsby-remark-prismjs`,
           // for latex
           `gatsby-remark-katex`,
+          // for copy file
+          `gatsby-remark-copy-linked-files`
         ],
       },
     },
