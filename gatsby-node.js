@@ -48,10 +48,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 // create post page
 const path = require("path")
+const { paginate } = require("gatsby-awesome-pagination")
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
+	const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
+	const blogListTemplate = path.resolve('./src/templates/blog-list.js')
   const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
   const categoryTemplate = path.resolve("./src/templates/categories.jsx")
 
@@ -68,15 +71,32 @@ exports.createPages = async ({ graphql, actions }) => {
         }
         tags: group(field: fields___sortCategories) {
           fieldValue
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
         }
         categories: group(field: fields___sortCategories) {
           fieldValue
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
         }
       }
     }
   `)
+  const posts = result.data.allMarkdownRemark.edges
+  const { tags, categories } = result.data.allMarkdownRemark
+
   // create blog post
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: blogPostTemplate,
@@ -86,23 +106,34 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   // create tag archive
-  result.data.allMarkdownRemark.tags.forEach(({ fieldValue }) => {
-    createPage({
-      path: `/tags/${fieldValue}/`,
-      component: tagTemplate,
-      context: {
-        tag: fieldValue,
-      },
-    })
+  tags.forEach(({ fieldValue }) => {
+		paginate({
+			createPage: createPage,
+			component: blogListTemplate,
+			items: posts,
+			itemsPerPage: 3, 
+			pathPrefix: `/tags/${fieldValue}`
+		})
   })
   // create category archive
-  result.data.allMarkdownRemark.categories.forEach(({ fieldValue }) => {
-    createPage({
-      path: `/categories/${fieldValue}/`,
-      component: categoryTemplate,
-      context: {
-        category: fieldValue,
-      },
-    })
+  categories.forEach(({ fieldValue }) => {
+		paginate({
+			createPage: createPage,
+			component: blogListTemplate,
+			items: posts,
+			itemsPerPage: 3, 
+			pathPrefix: `/categories/${fieldValue}`
+		})
+		
   })
+
+  // create archive list
+  paginate({
+    createPage: createPage,
+    component: blogListTemplate,
+    items: posts,
+    itemsPerPage: 3,
+    pathPrefix: `/archive`,
+  })
+
 }
