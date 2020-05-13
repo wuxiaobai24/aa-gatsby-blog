@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
   ]
 
   const LinkList = links.map(({ url, name }) => (
-    <div className="text-center m-2 p-2">
+    <div className="text-center m-2 p-2" key={name} >
       <Link to={url}>{name}</Link>
     </div>
   ))

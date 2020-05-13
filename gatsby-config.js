@@ -5,6 +5,7 @@ module.exports = {
     author: `wuxiaobai24`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -14,11 +15,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`, 
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'posts', 
+        name: "posts",
         path: `${__dirname}/content/posts`,
-      }
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -34,28 +35,58 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+      },
+    },
     {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
-          families: ['Short Stack']
-        }
-      }
+          families: ["Short Stack"],
+        },
+      },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-page-creator`,
       options: {
-        plugins: [
+        path: `${__dirname}/content/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+        defaultLayouts: {
+          default: require.resolve("./src/components/layout.js"),
+        },
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`, 
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 600,
-            }
-          }
-        ]
-      }
-    }
+            },
+          },
+          // for code highlight
+          `gatsby-remark-prismjs`,
+          // for latex
+          `gatsby-remark-katex`,
+          // for copy file
+          `gatsby-remark-copy-linked-files`,
+          // purcecss
+          {
+            resolve: `gatsby-plugin-purgecss`,
+            options: {
+              printRejected: false,
+              develop: false,
+              tailwind: true,
+            },
+          },
+        ],
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
