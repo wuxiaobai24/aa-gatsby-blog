@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export default ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges.map(({ node }) => {
+  const posts = data.allMdx.edges.map(({ node }) => {
     const slug = node.fields.slug
     const title = node.frontmatter.title
     return (
@@ -21,7 +21,7 @@ export default ({ data, pageContext }) => {
     <Layout>
       <SEO title={`archive #${currentPage} page`} />
       <div className="flex flex-col p-4">{posts}</div>
-      {/* {data.allMarkdownRemark.edges.map(edge => <PostItem item={edge.node} />)} */}
+      {/* {data.allMdx.edges.map(edge => <PostItem item={edge.node} />)} */}
       <div className="grid grid-col-3 grid-row-1">
         {pageContext.previousPagePath && (
           <div className="col-start-1 col-end-2 text-center">
@@ -40,7 +40,7 @@ export default ({ data, pageContext }) => {
 
 export const query = graphql`
   query BlogListQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+    allMdx(
       sort: { order: DESC, fields: frontmatter___date }
       limit: $limit
       skip: $skip
