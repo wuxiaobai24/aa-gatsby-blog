@@ -1,0 +1,20 @@
+.header-container {
+	@apply rounded-lg;
+	@apply shadow;
+	@apply border;
+	@apply border-red-600;
+	@apply container;
+	@apply mx-auto;
+}
+
+.header {
+
+}
+
+.taglist {
+
+}
+
+.tagitem {
+
+}

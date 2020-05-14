@@ -8,11 +8,13 @@ export default ({ data, pageContext }) => {
     const slug = node.fields.slug
     const title = node.frontmatter.title
     return (
-      <div className="block-inline m-4 bg-blue-300" key={slug}>
-        <Link to={slug} className="p-2">
-          {title}
-        </Link>
-      </div>
+      <Link
+        className="card-item"
+        key={slug}
+        to={slug}
+      >
+        {title}
+      </Link>
     )
   })
   const { currentPage } = pageContext
@@ -20,19 +22,28 @@ export default ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={`archive #${currentPage} page`} />
-      <div className="flex flex-col p-4">{posts}</div>
-      {/* {data.allMdx.edges.map(edge => <PostItem item={edge.node} />)} */}
-      <div className="grid grid-col-3 grid-row-1">
-        {pageContext.previousPagePath && (
-          <div className="col-start-1 col-end-2 text-center">
-            <Link to={pageContext.previousPagePath}>Prev</Link>
-          </div>
-        )}
-        {pageContext.nextPagePath && (
-          <div className="col-start-3 col-end-4 text-center">
-            <Link to={pageContext.nextPagePath}>Next</Link>
-          </div>
-        )}
+      <div className="card-container">{posts}</div>
+      {/* pagniation */}
+      <div className="flex flex-center justify-between mx-auto">
+        <Link
+          className={
+            "text-center border border-red-600 hover:bg-yellow-200 w-20 h-10 p-2 rounded handing-font" +
+            (pageContext.previousPagePath ? "" : " hidden")
+          }
+          to={pageContext.previousPagePath}
+        >
+          Prev
+        </Link>
+        <div className="w-20 h-10 p-2"></div>
+        <Link
+          className={
+            "text-center border border-red-600 hover:bg-yellow-200 w-20 h-10 p-2 rounded handing-font" +
+            (pageContext.nextPagePath ? "" : " hidden")
+          }
+          to={pageContext.nextPagePath}
+        >
+          Next
+        </Link>
       </div>
     </Layout>
   )
@@ -52,7 +63,9 @@ export const query = graphql`
           }
           frontmatter {
             title
+            date
           }
+          excerpt(pruneLength: 200)
         }
       }
     }

@@ -60,7 +60,7 @@ module.exports = {
       options: {
         extensions: [".mdx", ".md"],
         defaultLayouts: {
-          default: require.resolve("./src/components/layout.js"),
+          default: require.resolve("./src/components/page-layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
@@ -88,6 +88,15 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-smoothscroll`,
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /images/
+        }
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

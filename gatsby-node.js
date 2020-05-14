@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 
-// create slug ,sortTags and sortCategories fields
+// create slug ,sortTags fields
 const { createFilePath } = require("gatsby-source-filesystem")
 const limax = require("limax")
 const moment = require("moment")
@@ -30,19 +30,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
 
-    const { tags, categories } = node.frontmatter
+    const { tags } = node.frontmatter
     const sortTags = tags.map(slugFunc)
-    const sortCategories = categories.map(slugFunc)
     createNodeField({
       node,
       name: "sortTags",
       value: sortTags,
     })
-    createNodeField({
-      node,
-      name: "sortCategories",
-      value: sortCategories,
-    })
+
   }
 }
 
@@ -53,10 +48,9 @@ const { paginate } = require("gatsby-awesome-pagination")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-	const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
-	const blogListTemplate = path.resolve('./src/templates/blog-list.js')
-  const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
-  const categoryTemplate = path.resolve("./src/templates/categories.jsx")
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
+  const blogListTemplate = path.resolve("./src/templates/blog-list.js")
+  const tagTemplate = path.resolve(`./src/templates/tag-blog-list.js`)
 
   const result = await graphql(`
     query {
@@ -69,17 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        tags: group(field: fields___sortCategories) {
-          fieldValue
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-        categories: group(field: fields___sortCategories) {
+        tags: group(field: fields___sortTags) {
           fieldValue
           edges {
             node {
@@ -93,7 +77,9 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   const posts = result.data.allMdx.edges
-  const { tags, categories } = result.data.allMdx
+  const { tags } = result.data.allMdx
+
+  const postPerPage = 6
 
   // create blog post
   posts.forEach(({ node }) => {
@@ -106,25 +92,17 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   // create tag archive
-  tags.forEach(({ fieldValue }) => {
-		paginate({
-			createPage: createPage,
-			component: blogListTemplate,
-			items: posts,
-			itemsPerPage: 3, 
-			pathPrefix: `/tags/${fieldValue}`
-		})
-  })
-  // create category archive
-  categories.forEach(({ fieldValue }) => {
-		paginate({
-			createPage: createPage,
-			component: blogListTemplate,
-			items: posts,
-			itemsPerPage: 3, 
-			pathPrefix: `/categories/${fieldValue}`
-		})
-		
+  tags.forEach(({ fieldValue, edges }) => {
+    paginate({
+      createPage: createPage,
+      component: tagTemplate,
+      items: edges,
+      itemsPerPage: postPerPage,
+      pathPrefix: `/tags/${fieldValue}`,
+      context: {
+        tag: fieldValue,
+      }
+    })
   })
 
   // create archive list
@@ -132,8 +110,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage: createPage,
     component: blogListTemplate,
     items: posts,
-    itemsPerPage: 3,
+    itemsPerPage: postPerPage,
     pathPrefix: `/archive`,
   })
-
 }

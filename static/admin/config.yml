@@ -19,7 +19,3 @@ collections:
         name: "tags"
         widget: "list"
         default: ["news", "blog"]
-      - label: "Categories"
-        name: "categories"
-        widget: "list"
-        default: ["news", "blog", "categories"]

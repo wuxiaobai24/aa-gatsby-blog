@@ -4,23 +4,18 @@
 h1 {
   @apply text-4xl;
   @apply text-center;
-}
-
-h1::after {
-  border-bottom: 2px dashed rgba(229, 62, 62, 1);
-  content: "";
-  width: 100px;
-  margin: 0.2em auto 0;
-  height: 2px;
-  display: block;
+  @apply font-bold;
 }
 
 h2 {
   @apply text-3xl;
+  @apply text-center;
+  @apply font-semibold;
 }
 
 h3 {
   @apply text-2xl;
+  @apply font-medium;
 }
 
 h4 {
@@ -57,7 +52,7 @@ ol {
   @apply list-inside;
 }
 
-li>p {
+li > p {
   display: inline-block;
   margin: 0;
 }
@@ -87,7 +82,6 @@ ul:last-child {
   list-style-type: none;
 }
 
-
 /* quota */
 
 blockquote {
@@ -98,7 +92,7 @@ blockquote {
 }
 
 blockquote blockquote {
-  padding-right: 0
+  padding-right: 0;
 }
 
 /* hr */
@@ -114,34 +108,34 @@ hr {
 
 table {
   padding: 0;
-  word-break: initial
+  word-break: initial;
 }
 table tr {
   border-top: 1px solid #dadfe6;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 table.md-table tr:nth-child(2n) {
-  background-color: #fafbfc
+  background-color: #fafbfc;
 }
 table tr th {
   font-weight: 400;
   border: 1px solid #dadfe6;
   margin: 0;
-  padding: 6px 13px
+  padding: 6px 13px;
 }
 table tr td {
   border: 1px solid #dadfe6;
   margin: 0;
-  padding: 6px 13px
+  padding: 6px 13px;
 }
 table tr td:first-child,
 table tr th:first-child {
-  margin-top: 0
+  margin-top: 0;
 }
 table tr td:last-child,
 table tr th:last-child {
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 a {
@@ -161,15 +155,124 @@ a:hover {
 }
 
 /* for code highlight */
-:not(pre) > code[class*="language-"]{
+:not(pre) > code[class*="language-"] {
   background-color: white;
   color: #444;
 }
 
-:not(pre) > code[class*="language-"]::before{
-  content: '`';
+:not(pre) > code[class*="language-"]::before {
+  content: "`";
 }
 
-:not(pre) > code[class*="language-"]::after{
-  content: '`';
+:not(pre) > code[class*="language-"]::after {
+  content: "`";
+}
+
+.card-container {
+  @apply flex;
+  @apply flex-col;
+  @apply p-3;
+}
+
+.card-item {
+  @apply text-xl;
+  @apply text-center;
+  @apply rounded;
+  @apply overflow-hidden;
+  @apply shadow-lg;
+  @apply border;
+  @apply border-red-600;
+  @apply my-2;
+  @apply p-4;
+}
+
+.card-item:hover {
+  @apply bg-yellow-200;
+}
+
+.topIcon {
+  @apply fixed;
+  @apply w-8;
+  @apply h-8;
+  @apply border;
+  @apply border-red-600;
+  @apply rounded-full;
+  @apply shadow-lg;
+  @apply z-10;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.topIcon:hover {
+  @apply bg-yellow-200 
+}
+
+.post-header {
+	@apply rounded-lg;
+	@apply shadow;
+	@apply border;
+	@apply border-red-600;
+  @apply mx-auto;
+  @apply p-4;
+}
+
+.post-header-title {
+  @apply text-4xl;
+  @apply text-center;
+  @apply mx-auto;
+  @apply block;
+}
+
+.post-header-tags {
+  @apply flex;
+  @apply flex-row;
+  @apply flex-wrap;
+  @apply items-center;
+  @apply justify-center;
+}
+
+.post-header-tagitem {
+  @apply text-xs;
+  @apply block;
+  @apply border;
+  @apply border-red-600;
+  @apply px-4;
+  @apply py-1;
+  @apply m-1;
+  @apply rounded-full;
+}
+
+.post-header-tagsitem:hover {
+  @apply bg-yellow-200;
+}
+
+.post-header-info {
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply justify-between;
+  @apply mt-1;
+}
+
+
+.post-header-date {
+  @apply text-xs;
+  @apply inline-block;
+  @apply border;
+  @apply border-red-600;
+  @apply px-4;
+  @apply py-1;
+  @apply my-1;
+  @apply rounded-full;
+  @apply bg-yellow-200;
+  @apply flex-none;
+}
+
+@screen lg {
+  .post-header-info {
+    @apply flex-row;
+  }
+  .post-header-tags {
+    @apply justify-end;
+  }
 }
