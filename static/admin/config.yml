@@ -1,6 +1,6 @@
 backend:
   name: github
-  reop: wuxiaobai24/aa-gatsby-blog
+  repo: wuxiaobai24/aa-gatsby-blog
   branch: develop
 
 media_folder: static/assets
