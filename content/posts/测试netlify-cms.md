@@ -9,8 +9,6 @@ categories:
   - blog
   - categories
 ---
-\## 使用 MDX
+\## 为什么多了一个/
 
-
-
-<button className="w-200 h-200 bg-blue-200">测试</button
+<button className="w-200 h-200 bg-blue-200">测试</button>
