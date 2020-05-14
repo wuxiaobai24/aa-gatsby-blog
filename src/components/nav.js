@@ -2,6 +2,8 @@ import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import "../style/style.css"
 
+import MenuIcon from "../images/menu.svg"
+
 const NavBar = ({ links }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   console.log(links)
@@ -14,7 +16,7 @@ const NavBar = ({ links }) => {
   })
   return (
     <Fragment>
-      <nav className="relative max-w-4xl flex flex-wrap flex-col lg:flex-row item-center p-6 mx-auto max-w-3xl z-10 top-0 handing-font">
+      <nav id="nav" className="relative max-w-4xl flex flex-wrap flex-col lg:flex-row item-center p-6 mx-auto max-w-3xl z-10 top-0 handing-font">
         <div className="flex justify-between items-center flex-shrink-0 mr-6 text-red-600">
           <Link to="/">Code & Fun</Link>
           {/* nav button */}
@@ -24,14 +26,15 @@ const NavBar = ({ links }) => {
               type="button"
               className="flex items-center px-3 py-2 border rounded text-red-600 border-red-700"
             >
-              <svg
+              {/* <svg
                 className="fill-current h-3 w-3"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <title>Menu</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-              </svg>
+              </svg> */}
+              <MenuIcon className="w-3 h-3" />
             </button>
           </div>
         </div>

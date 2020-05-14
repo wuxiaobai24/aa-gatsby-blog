@@ -13,6 +13,9 @@ import "../style/style.css"
 
 import NavBar from "./nav"
 
+import TopIcon from "../images/top.svg"
+import scrollTo from "gatsby-plugin-smoothscroll"
+
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
   //   query {
@@ -42,7 +45,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <NavBar links={links} />
+      <NavBar  links={links} />
       {/* <header className="container mx-auto">
         <div className="flex flex-col mt-32 mb-4 p-6 ">
           <Img
@@ -56,10 +59,18 @@ const Layout = ({ children }) => {
           {LinkList}
         </div>
       </header> */}
-      <main className="container mx-auto p-4 max-w-4xl">{children}</main>
-      <footer className="text-center bg-gray-100">
-        <p>This is a footer</p>
-        <p>Build by Gatsby.js and Tailwind.css</p>
+      <main id="main"  className="container mx-auto p-4 max-w-4xl">{children}</main>
+      <TopIcon className="topIcon" onClick={() => scrollTo("#nav")} />
+      <footer className="container mx-auto p-4 max-w-4xl text-center bg-white">
+        <p>
+          You can find the source code in{" "}
+          <a src="https://github.com/wuxiaobai24/aa-gatsby-blog">Github</a>.
+        </p>
+        <p>Design by wuxiaobai24.</p>
+        <p>
+          Build by <a src="https://www.gatsbyjs.org/">Gatsby.js</a> and{" "}
+          <a src="https://tailwindcss.com/">Tailwind.css</a>
+        </p>
       </footer>
     </>
   )

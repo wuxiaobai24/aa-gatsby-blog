@@ -53,10 +53,10 @@ const { paginate } = require("gatsby-awesome-pagination")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-	const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
-	const blogListTemplate = path.resolve('./src/templates/blog-list.js')
-  const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
-  const categoryTemplate = path.resolve("./src/templates/categories.jsx")
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
+  const blogListTemplate = path.resolve("./src/templates/blog-list.js")
+  // const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
+  // const categoryTemplate = path.resolve("./src/templates/categories.jsx")
 
   const result = await graphql(`
     query {
@@ -95,6 +95,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allMdx.edges
   const { tags, categories } = result.data.allMdx
 
+  const postPerPage = 6
+
   // create blog post
   posts.forEach(({ node }) => {
     createPage({
@@ -107,24 +109,23 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   // create tag archive
   tags.forEach(({ fieldValue }) => {
-		paginate({
-			createPage: createPage,
-			component: blogListTemplate,
-			items: posts,
-			itemsPerPage: 3, 
-			pathPrefix: `/tags/${fieldValue}`
-		})
+    paginate({
+      createPage: createPage,
+      component: blogListTemplate,
+      items: posts,
+      itemsPerPage: postPerPage,
+      pathPrefix: `/tags/${fieldValue}`,
+    })
   })
   // create category archive
   categories.forEach(({ fieldValue }) => {
-		paginate({
-			createPage: createPage,
-			component: blogListTemplate,
-			items: posts,
-			itemsPerPage: 3, 
-			pathPrefix: `/categories/${fieldValue}`
-		})
-		
+    paginate({
+      createPage: createPage,
+      component: blogListTemplate,
+      items: posts,
+      itemsPerPage: postPerPage,
+      pathPrefix: `/categories/${fieldValue}`,
+    })
   })
 
   // create archive list
@@ -132,8 +133,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage: createPage,
     component: blogListTemplate,
     items: posts,
-    itemsPerPage: 3,
+    itemsPerPage: postPerPage,
     pathPrefix: `/archive`,
   })
-
 }

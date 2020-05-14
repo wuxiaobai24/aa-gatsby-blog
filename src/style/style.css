@@ -17,6 +17,7 @@ h1::after {
 
 h2 {
   @apply text-3xl;
+  @apply text-center;
 }
 
 h3 {
@@ -187,10 +188,26 @@ a:hover {
   @apply shadow-lg;
   @apply border;
   @apply border-red-600;
-  @apply my-1;
-  @apply p-3;
+  @apply my-2;
+  @apply p-4;
 }
 
 .card-item:hover {
   @apply bg-yellow-200;
+}
+
+.topIcon {
+  @apply fixed;
+  @apply w-8;
+  @apply h-8;
+  @apply border;
+  @apply border-red-600;
+  @apply rounded;
+  @apply shadow-lg;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.topIcon:hover {
+  @apply bg-yellow-200 
 }
