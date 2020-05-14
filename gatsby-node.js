@@ -108,7 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   // create tag archive
-  tags.forEach(({ fieldValue }) => {
+  tags.forEach(({ fieldValue, edges: posts }) => {
     paginate({
       createPage: createPage,
       component: blogListTemplate,
@@ -118,7 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   // create category archive
-  categories.forEach(({ fieldValue }) => {
+  categories.forEach(({ fieldValue, edges: posts  }) => {
     paginate({
       createPage: createPage,
       component: blogListTemplate,

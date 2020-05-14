@@ -7,7 +7,6 @@ export default ({ data, pageContext }) => {
   const posts = data.allMdx.edges.map(({ node }) => {
     const slug = node.fields.slug
     const title = node.frontmatter.title
-    const excerpt = node.excerpt
     return (
       <Link
         className="card-item"

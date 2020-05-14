@@ -64,12 +64,12 @@ const Layout = ({ children }) => {
       <footer className="container mx-auto p-4 max-w-4xl text-center bg-white">
         <p>
           You can find the source code in{" "}
-          <a src="https://github.com/wuxiaobai24/aa-gatsby-blog">Github</a>.
+          <a href="https://github.com/wuxiaobai24/aa-gatsby-blog">Github</a>.
         </p>
         <p>Design by wuxiaobai24.</p>
         <p>
-          Build by <a src="https://www.gatsbyjs.org/">Gatsby.js</a> and{" "}
-          <a src="https://tailwindcss.com/">Tailwind.css</a>
+          Build by <a href="https://www.gatsbyjs.org/">Gatsby.js</a> and{" "}
+          <a href="https://tailwindcss.com/">Tailwind.css</a>
         </p>
       </footer>
     </>

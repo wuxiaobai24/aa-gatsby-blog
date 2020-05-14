@@ -4,24 +4,18 @@
 h1 {
   @apply text-4xl;
   @apply text-center;
-}
-
-h1::after {
-  border-bottom: 2px dashed rgba(229, 62, 62, 1);
-  content: "";
-  width: 100px;
-  margin: 0.2em auto 0;
-  height: 2px;
-  display: block;
+  @apply font-bold;
 }
 
 h2 {
   @apply text-3xl;
   @apply text-center;
+  @apply font-semibold;
 }
 
 h3 {
   @apply text-2xl;
+  @apply font-medium;
 }
 
 h4 {
@@ -202,12 +196,69 @@ a:hover {
   @apply h-8;
   @apply border;
   @apply border-red-600;
-  @apply rounded;
+  @apply rounded-full;
   @apply shadow-lg;
+  @apply z-10;
   bottom: 2rem;
   right: 2rem;
 }
 
 .topIcon:hover {
   @apply bg-yellow-200 
+}
+
+.post-header {
+	@apply rounded-lg;
+	@apply shadow;
+	@apply border;
+	@apply border-red-600;
+  @apply mx-auto;
+  @apply p-4;
+}
+
+.post-header-title {
+  @apply text-4xl;
+  @apply text-center;
+  @apply mx-auto;
+  @apply block;
+}
+
+.post-header-tags {
+  @apply flex;
+  @apply flex-row;
+  @apply flex-wrap;
+  @apply items-center;
+  @apply justify-end;
+}
+
+.post-header-tagsitem {
+  @apply text-xs;
+  @apply block;
+  @apply border;
+  @apply border-red-600;
+  @apply px-4;
+  @apply py-1;
+  @apply mx-1;
+  @apply rounded-full;
+}
+
+.post-header-tagsitem:hover {
+  @apply bg-yellow-200;
+}
+
+.post-header-info {
+  @apply flex;
+  @apply items-center;
+  @apply justify-between;
+}
+
+.post-header-date {
+  @apply text-xs;
+  @apply block;
+  @apply border;
+  @apply border-red-600;
+  @apply px-4;
+  @apply py-1;
+  @apply rounded-full;
+  @apply bg-yellow-200;
 }
