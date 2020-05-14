@@ -55,8 +55,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
   const blogListTemplate = path.resolve("./src/templates/blog-list.js")
-  // const tagTemplate = path.resolve(`./src/templates/tags.jsx`)
-  // const categoryTemplate = path.resolve("./src/templates/categories.jsx")
+  const tagTemplate = path.resolve(`./src/templates/tag-blog-list.js`)
+  const categoryTemplate = path.resolve("./src/templates/category-blog-list.js")
 
   const result = await graphql(`
     query {
@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        tags: group(field: fields___sortCategories) {
+        tags: group(field: fields___sortTags) {
           fieldValue
           edges {
             node {
@@ -108,13 +108,20 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   // create tag archive
-  tags.forEach(({ fieldValue, edges: posts }) => {
+  tags.forEach(({ fieldValue, edges }) => {
+    console.log(fieldValue)
+    edges.forEach(({node}) => {
+      console.log(node.fields.slug)
+    })
     paginate({
       createPage: createPage,
-      component: blogListTemplate,
-      items: posts,
+      component: tagTemplate,
+      items: edges,
       itemsPerPage: postPerPage,
       pathPrefix: `/tags/${fieldValue}`,
+      context: {
+        tag: fieldValue,
+      }
     })
   })
   // create category archive
@@ -125,6 +132,9 @@ exports.createPages = async ({ graphql, actions }) => {
       items: posts,
       itemsPerPage: postPerPage,
       pathPrefix: `/categories/${fieldValue}`,
+      context: {
+        categoriy: fieldValue,
+      }
     })
   })
 

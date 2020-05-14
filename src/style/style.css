@@ -228,17 +228,17 @@ a:hover {
   @apply flex-row;
   @apply flex-wrap;
   @apply items-center;
-  @apply justify-end;
+  @apply justify-center;
 }
 
-.post-header-tagsitem {
+.post-header-tagitem {
   @apply text-xs;
   @apply block;
   @apply border;
   @apply border-red-600;
   @apply px-4;
   @apply py-1;
-  @apply mx-1;
+  @apply m-1;
   @apply rounded-full;
 }
 
@@ -248,17 +248,31 @@ a:hover {
 
 .post-header-info {
   @apply flex;
+  @apply flex-col;
   @apply items-center;
   @apply justify-between;
+  @apply mt-1;
 }
+
 
 .post-header-date {
   @apply text-xs;
-  @apply block;
+  @apply inline-block;
   @apply border;
   @apply border-red-600;
   @apply px-4;
   @apply py-1;
+  @apply my-1;
   @apply rounded-full;
   @apply bg-yellow-200;
+  @apply flex-none;
+}
+
+@screen lg {
+  .post-header-info {
+    @apply flex-row;
+  }
+  .post-header-tags {
+    @apply justify-end;
+  }
 }

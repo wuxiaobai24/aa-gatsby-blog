@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Layout from "../components/layout"
+import Layout from "../components/page-layout"
 import SEO from "../components/seo"
 import limax from "limax"
 
@@ -10,7 +10,7 @@ export default ({ data }) => {
   const tags = data.allMdx.tags.map(({ fieldValue, totalCount }) => {
     const slug = slugFunc(fieldValue)
     return (
-      <Link to={`/tags/${slug}`} className="card-item" key={slug}>
+      <Link to={`/tags/${slug}`} className="post-header-tagitem" key={slug}>
         {fieldValue}
       </Link>
     )
@@ -18,7 +18,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="Tags" />
-      <div className="card-container">{tags}</div>
+      <div className="post-header-tags">{tags}</div>
     </Layout>
   )
 }

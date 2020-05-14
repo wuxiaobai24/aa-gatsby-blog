@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 export default ({ title, tags, date, slug }) => {
   const slugfunc = slug => limax(slug, { tone: false })
   const taglist = tags.map(tag => (
-    <Link to={`/tags/${slugfunc(tag)}`} className="post-header-tagsitem">{tag}</Link>
+    <Link to={`/tags/${slugfunc(tag)}`} className="post-header-tagitem">{tag}</Link>
   ))
   console.log(tags)
   console.log(taglist)
