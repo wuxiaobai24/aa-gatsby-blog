@@ -6,7 +6,6 @@ import MenuIcon from "../images/menu.svg"
 
 const NavBar = ({ links }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
-  console.log(links)
   const linklist = links.map(({ url, name }) => {
     return (
       <li className="mr-3 pt-3 lg:pt-0" key={name}>

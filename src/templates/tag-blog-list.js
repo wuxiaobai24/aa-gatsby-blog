@@ -1,6 +1,6 @@
 
 import Layout from "./blog-list"
-
+import {graphql} from "gatsby"
 export default Layout;
 
 export const query = graphql`
