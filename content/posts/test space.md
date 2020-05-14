@@ -4,9 +4,6 @@ date: "2020-04-02 21:09:55"
 tags:
 - Test
 - Tag
-categories:
-- Test
-- Category
 ---
 
 [toc]

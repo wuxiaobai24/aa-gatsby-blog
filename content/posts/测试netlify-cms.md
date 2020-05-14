@@ -4,10 +4,6 @@ title: 测试Netlify CMS
 tags:
   - news
   - blog
-categories:
-  - news
-  - blog
-  - categories
 ---
 \## 为什么多了一个/
 
