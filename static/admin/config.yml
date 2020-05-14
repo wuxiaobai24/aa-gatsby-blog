@@ -1,0 +1,25 @@
+backend:
+  name: github
+  reop: wuxiaobai24/aa-gatsby-blog
+  branch: develop
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: content/posts
+    create: true
+    fields:
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["news", "blog"]
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        default: ["news", "blog", "categories"]
