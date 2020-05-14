@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: wuxiaobai24/aa-gatsby-blog
-  branch: develop
+  branch: master
 
 media_folder: static/assets
 public_folder: /assets
