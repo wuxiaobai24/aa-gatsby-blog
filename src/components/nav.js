@@ -24,6 +24,7 @@ const NavBar = ({ links }) => {
               onClick={() => setNavbarOpen(!navbarOpen)}
               type="button"
               className="flex items-center px-3 py-2 border rounded text-red-600 border-red-700"
+              
             >
               {/* <svg
                 className="fill-current h-3 w-3"
@@ -33,6 +34,7 @@ const NavBar = ({ links }) => {
                 <title>Menu</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
               </svg> */}
+              Menu
               <MenuIcon className="w-3 h-3" />
             </button>
           </div>
