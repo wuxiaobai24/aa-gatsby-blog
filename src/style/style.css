@@ -242,7 +242,7 @@ a:hover {
   @apply rounded-full;
 }
 
-.post-header-tagsitem:hover {
+.post-header-tagitem:hover {
   @apply bg-yellow-200;
 }
 

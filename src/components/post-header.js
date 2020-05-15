@@ -8,8 +8,6 @@ export default ({ title, tags, date, slug }) => {
   const taglist = tags.map(tag => (
     <Link to={`/tags/${slugfunc(tag)}`} className="post-header-tagitem">{tag}</Link>
   ))
-  console.log(tags)
-  console.log(taglist)
   return (
     <div className="post-header">
       <div className="post-header-title">
