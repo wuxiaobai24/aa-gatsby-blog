@@ -22,13 +22,13 @@ module.exports = {
         path: `${__dirname}/content/posts`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: "leetcode",
-        path: `${__dirname}/content/leetcode`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: "leetcode",
+    //     path: `${__dirname}/content/leetcode`,
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
