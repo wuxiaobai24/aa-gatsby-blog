@@ -57,12 +57,12 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-page-creator`,
-      options: {
-        path: `${__dirname}/content/pages`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-page-creator`,
+    //   options: {
+    //     path: `${__dirname}/content/pages`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
