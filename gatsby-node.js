@@ -37,7 +37,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: "sortTags",
       value: sortTags,
     })
-
+    const fileNode = getNode(node.parent)
+    createNodeField({
+      node,
+      name: "source",
+      value: fileNode.sourceInstanceName,
+    })
   }
 }
 
@@ -54,7 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query {
-      allMdx {
+      allMdx (filter: {fields: {source: {eq: "post"}}}) {
         totalCount
         edges {
           node {
@@ -101,7 +106,7 @@ exports.createPages = async ({ graphql, actions }) => {
       pathPrefix: `/tags/${fieldValue}`,
       context: {
         tag: fieldValue,
-      }
+      },
     })
   })
 

@@ -25,7 +25,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allMdx {
+    allMdx(filter: { fields: { source: { eq: "post" } } }) {
       tags: group(field: frontmatter___tags) {
         fieldValue
         totalCount

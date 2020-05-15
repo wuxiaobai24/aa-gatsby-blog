@@ -17,8 +17,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "posts",
+        name: "post",
         path: `${__dirname}/content/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "leetcode",
+        path: `${__dirname}/content/leetcode`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -52,7 +59,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
-        path: `${__dirname}/content/posts`,
+        path: `${__dirname}/content/pages`,
       },
     },
     {
