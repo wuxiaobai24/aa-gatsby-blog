@@ -3,6 +3,7 @@ module.exports = {
     title: `Code & Fun`,
     description: `wuxiaobai24's blog`,
     author: `wuxiaobai24`,
+    siteUrl: `https://codeand.fun`
   },
   plugins: [
     `gatsby-plugin-netlify`,
@@ -102,6 +103,12 @@ module.exports = {
         rule: {
           include: /images/
         }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `codeandfun`
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
