@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
     { url: "/", name: "Home" },
     { url: "/archive", name: "Archive" },
     { url: "/tags/", name: "Tags" },
+    { url: "/bookshelf/", name: "Books"},
     { url: "/about", name: "About" },
   ]
 
