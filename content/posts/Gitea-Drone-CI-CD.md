@@ -86,7 +86,7 @@ services:
 
 打开`Gitea`的页面 -> 个人信息 -> 应用 -> 管理 OAuth2 应用程序
 
-![Gitea-Drone-CI-CD-20200327211442-2020-03-27](http://imagehosting.wuxiaobai24.fun/blogGitea-Drone-CI-CD-20200327211442-2020-03-27)
+![Gitea-Drone-CI-CD-20200327211442-2020-03-27](https://imagehosting.wuxiaobai24.fun/blogGitea-Drone-CI-CD-20200327211442-2020-03-27)
 
 应用名称填什么都无所谓，但是重定向 URL 比较重要，要填 `Drone`服务的地址（虽然现在还没启动），比如说，你的 Drone 的 `ip` 地址为`1.2.3.4`，`Drone`端口的为`8000`，
 那么就可以填`http://1.2.3.4:8000`。
