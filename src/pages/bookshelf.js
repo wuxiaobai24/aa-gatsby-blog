@@ -11,9 +11,9 @@ const StarRating = ({ rating }) => {
   const arr = Array(rating.max).fill(true).fill(false, parseInt(rating.value))
   return (
     <div className="inline-block">
-      {arr.map(flag =>
+      {arr.map((flag,index) =>
         flag ? (
-          <YellowStarIcon className="inline w-5 h-5" />
+          <YellowStarIcon className="inline w-5 h-5" key={index} />
         ) : (
           <StarIcon className="inline w-5 h-5" />
         )
@@ -23,7 +23,7 @@ const StarRating = ({ rating }) => {
 }
 
 export default () => {
-  const count = 6
+  const count = 10
   const user = "132926767"
   const [start, setStart] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
