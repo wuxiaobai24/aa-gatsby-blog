@@ -15,7 +15,7 @@ const StarRating = ({ rating }) => {
         flag ? (
           <YellowStarIcon className="inline w-5 h-5" key={index} />
         ) : (
-          <StarIcon className="inline w-5 h-5" />
+          <StarIcon className="inline w-5 h-5" key={index} />
         )
       )}
     </div>
