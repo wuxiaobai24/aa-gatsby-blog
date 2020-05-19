@@ -8,20 +8,18 @@ export default ({ data, pageContext }) => {
     const slug = node.fields.slug
     const title = node.frontmatter.title
     return (
-      <Link
-        className="card-item"
-        key={slug}
-        to={slug}
-      >
+      <Link className="card-item" key={slug} to={slug}>
         {title}
       </Link>
     )
   })
-  const { currentPage } = pageContext
-
+  const currentPage = pageContext.humanPageNumber
+  const seoTitle = `${pageContext.tag ? 'Tag ' + pageContext.tag : 'Archive'} #${currentPage} page`
   return (
     <Layout>
-      <SEO title={`archive #${currentPage} page`} />
+      <SEO title={seoTitle} 
+          description={seoTitle} />
+      />
       <div className="card-container">{posts}</div>
       {/* pagniation */}
       <div className="flex flex-center justify-between mx-auto">
