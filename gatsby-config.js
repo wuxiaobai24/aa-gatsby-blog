@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -40,20 +41,14 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#e53e3e`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-postcss`,
-      options: {
-        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+        icon: `src/images/favicon-32x32.png`, // This path is relative to the root of the site.
       },
     },
     {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
-          families: ["Short Stack"],
+          families: ["Short Stack", "Annie Use Your Telescope"],
         },
       },
     },

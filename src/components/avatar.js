@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Img from "gatsby-image"
 
-export default () => {
+export default ({ imgClassName }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "avatar.jpeg" }) {
@@ -14,9 +14,13 @@ export default () => {
         }
       }
     }
-	`)
+  `)
 
-	return <Img 
-		className="w-20 h-20 lg:w-32 lg:h-32  rounded-full mx-auto"
-	fluid={data.file.childImageSharp.fluid} alt="Avater" />
+  return (
+    <Img
+      className={imgClassName}
+      fluid={data.file.childImageSharp.fluid}
+      alt="Avater"
+    />
+  )
 }
