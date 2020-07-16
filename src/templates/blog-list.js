@@ -2,17 +2,30 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { PostList } from "../components/post-list"
+import Pagination from "../components/pagination"
+
 
 export default ({ data, pageContext }) => {
   const posts = data.allMdx.edges.map(({ node }) => {
-    const slug = node.fields.slug
-    const title = node.frontmatter.title
-    return (
-      <Link className="card-item" key={slug} to={slug}>
-        {title}
-      </Link>
-    )
+    return {
+      slug: node.fields.slug,
+      title: node.frontmatter.title,
+      date: node.frontmatter.date,
+      excerpt: node.excerpt,
+      tags: node.frontmatter.tags,
+    }
   })
+  // const posts = data.allMdx.edges.map(({ node }) => {
+  //   const slug = node.fields.slug
+  //   const title = node.frontmatter.title
+  //   return (
+  //     <Link className="card-item" key={slug} to={slug}>
+  //       {title}
+  //     </Link>
+  //   )
+  // })
+  console.log(pageContext)
   const currentPage = pageContext.humanPageNumber
   const seoTitle = `${
     pageContext.tag ? "Tag " + pageContext.tag : "Archive"
@@ -20,29 +33,16 @@ export default ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={seoTitle} description={seoTitle} />
-      <div className="card-container">{posts}</div>
-      {/* pagniation */}
-      <div className="flex flex-center justify-between mx-auto">
-        <Link
-          className={
-            "text-center border border-red-600 hover:bg-yellow-200 w-20 h-10 p-2 rounded handing-font" +
-            (pageContext.previousPagePath ? "" : " hidden")
-          }
-          to={pageContext.previousPagePath}
-        >
-          Prev
-        </Link>
-        <div className="w-20 h-10 p-2"></div>
-        <Link
-          className={
-            "text-center border border-red-600 hover:bg-yellow-200 w-20 h-10 p-2 rounded handing-font" +
-            (pageContext.nextPagePath ? "" : " hidden")
-          }
-          to={pageContext.nextPagePath}
-        >
-          Next
-        </Link>
+      <div className="container">
+        <PostList posts={posts} />
       </div>
+      {/* pagniation */}
+      <Pagination
+        numberOfPages={pageContext.numberOfPages}
+        nextPagePath={pageContext.nextPagePath}
+        previousPagePath={pageContext.previousPagePath}
+        pageNumber={currentPage}
+      />
     </Layout>
   )
 }
@@ -63,6 +63,7 @@ export const query = graphql`
           frontmatter {
             title
             date
+            tags
           }
           excerpt(pruneLength: 200)
         }
