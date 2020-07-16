@@ -2,7 +2,7 @@ import React from "react"
 
 import { Link } from "gatsby"
 
-import { Tag, TagList } from "../components/tags"
+import { TagList } from "../components/tags"
 
 export default ({ title, tags, date, slug }) => {
   // const taglist = tags.map(tag => (

@@ -10,13 +10,13 @@ import PropTypes from "prop-types"
 // import Img from "gatsby-image"
 // import { useStaticQuery, graphql, Link } from "gatsby"
 import "../style/style.scss"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import NavBar from "./nav"
 import Avatar from "./avatar"
 import Card from "./card"
 
-import TopIcon from "../images/top.svg"
-import scrollTo from "gatsby-plugin-smoothscroll"
+// import TopIcon from "../images/top.svg"
+// import scrollTo from "gatsby-plugin-smoothscroll"
 
 const Layout = ({ children }) => {
   const links = [

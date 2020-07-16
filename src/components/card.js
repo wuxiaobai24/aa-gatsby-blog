@@ -2,7 +2,7 @@ import React from "react"
 import { useState } from "react"
 
 const ShowIcon = ({ isShow, toggleShowIcon }) => (
-  <span
+  <button
     onClick={toggleShowIcon}
     className="card-header-icon"
     aria-label="show option"
@@ -14,7 +14,7 @@ const ShowIcon = ({ isShow, toggleShowIcon }) => (
         <i className="fas fa-angle-left" aria-hidden="true"></i>
       )}
     </span>
-  </span>
+  </button>
 )
 
 export default ({ title, children }) => {
