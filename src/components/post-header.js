@@ -17,7 +17,7 @@ export default ({ title, tags, date, slug }) => {
         <Link to={slug}>{title}</Link>
       </div>
       <div className="subtitle">
-        <div className="post-header-date">{date}</div>
+        <div className="post-header-date">{new Date(date).toLocaleDateString()}</div>
       </div>
       <TagList tags={tags} />
     </div>

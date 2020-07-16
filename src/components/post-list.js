@@ -3,6 +3,7 @@ import { TagList } from "./tags"
 import { Link } from "gatsby"
 
 const PostItem = ({ slug, title, date, excerpt, tags }) => {
+  console.log(date)
   return (
     <div className="box">
       <article className="media">
@@ -10,20 +11,27 @@ const PostItem = ({ slug, title, date, excerpt, tags }) => {
           <div className="content">
             <p className="title">{title}</p>
 
-            <p className="subtitle">{date}</p>
+            <p className="subtitle">{new Date(date).toLocaleDateString()}</p>
 
             <div>
               <p>{excerpt}</p>
             </div>
-            <div className="level">
+            <div className="level mt-2">
               <div className="level-left">
-                <TagList tags={tags} />
+                <div className="level-item">
+                  <TagList tags={tags} />
+                </div>
               </div>
               <div className="level-right">
-                <Link to={slug} className="button is-primary is-small is-outlined rounded">
-                  {/* <Link to={slug}>Read More</Link> */}
-									Read More
-                </Link>
+                <div className="level-item">
+                  <Link
+                    to={slug}
+                    className="button is-primary is-small is-outlined rounded"
+                  >
+                    {/* <Link to={slug}>Read More</Link> */}
+                    Read More
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ const hashfunc = s => {
 const colorfunc = name => colorlist[hashfunc(name) % colorlist.length]
 
 const Tag = ({ color, name, url }) => (
-  <Link className={`tag is-rounded is-${color}`} to={url}>
+  <Link className={`tag is-rounded is-${color} is`} to={url}>
     {name}
   </Link>
 )

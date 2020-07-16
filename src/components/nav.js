@@ -24,29 +24,36 @@ const NavbarBurger = ({ isActive, toggleMenu }) => (
 
 const NavBar = ({ links }) => {
   const [isActive, setIsActive] = React.useState(false)
-  const linklist = links.map(({ url, name }) => (
+  const linklist = links.map(({ url, name, icon }) => (
     <NavbarItem url={url} key={url}>
-      {name}
+      {icon && (
+        <span className="icon">
+          <i className={icon}></i>
+        </span>
+      )}
+      <span>{name}</span>
     </NavbarItem>
   ))
   return (
-    <nav className="navbar is-space">
-      <div className="navbar-brand">
-        <NavbarItem url="/">
-          <span
-            className="is-size-1"
-            style={{ fontFamily: "Annie Use Your Telescope" }}
-          >
-            CODE & FUN
-          </span>
-        </NavbarItem>
-        <NavbarBurger
-          isActive={isActive}
-          toggleMenu={() => setIsActive(!isActive)}
-        />
-      </div>
-      <div className={`navbar-menu  ${isActive ? "is-active" : ""}`}>
-        <div className="navbar-end">{linklist}</div>
+    <nav className="navbar is-transparent is-space has-shadow">
+      <div className="container">
+        <div className="navbar-brand">
+          <NavbarItem url="/">
+            <span
+              className="is-size-2"
+              style={{ fontFamily: "Annie Use Your Telescope" }}
+            >
+              CODE & FUN
+            </span>
+          </NavbarItem>
+          <NavbarBurger
+            isActive={isActive}
+            toggleMenu={() => setIsActive(!isActive)}
+          />
+        </div>
+        <div className={`navbar-menu  ${isActive ? "is-active" : ""}`}>
+          <div className="navbar-end">{linklist}</div>
+        </div>
       </div>
     </nav>
   )

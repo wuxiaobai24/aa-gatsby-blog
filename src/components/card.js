@@ -3,9 +3,10 @@ import { useState } from "react"
 
 const ShowIcon = ({ isShow, toggleShowIcon }) => (
   <button
-    onClick={toggleShowIcon}
     className="card-header-icon"
     aria-label="show option"
+    onClick={toggleShowIcon}
+    style={{ borderWidth: "0px", backgroundColor: "inherit" }}
   >
     <span className="icon">
       {isShow ? (
@@ -17,13 +18,18 @@ const ShowIcon = ({ isShow, toggleShowIcon }) => (
   </button>
 )
 
-export default ({ title, children }) => {
+export default ({ title, icon, children }) => {
   const [isActive, setIsActive] = useState(true)
 
   return (
     <div className="card">
       <header className="card-header">
-        <p className="card-header-title">{title}</p>
+        <p className="card-header-title">
+          <span className="icon">
+            <i className={icon}></i>
+          </span>
+          <span>{title}</span>
+        </p>
         <ShowIcon
           isShow={isActive}
           toggleShowIcon={() => setIsActive(!isActive)}

@@ -5,7 +5,6 @@ import SEO from "../components/seo"
 import { PostList } from "../components/post-list"
 import Pagination from "../components/pagination"
 
-
 export default ({ data, pageContext }) => {
   const posts = data.allMdx.edges.map(({ node }) => {
     return {
@@ -25,7 +24,7 @@ export default ({ data, pageContext }) => {
   //     </Link>
   //   )
   // })
-  console.log(pageContext)
+  // console.log(pageContext)
   const currentPage = pageContext.humanPageNumber
   const seoTitle = `${
     pageContext.tag ? "Tag " + pageContext.tag : "Archive"
@@ -35,14 +34,14 @@ export default ({ data, pageContext }) => {
       <SEO title={seoTitle} description={seoTitle} />
       <div className="container">
         <PostList posts={posts} />
+        <Pagination
+          numberOfPages={pageContext.numberOfPages}
+          nextPagePath={pageContext.nextPagePath}
+          previousPagePath={pageContext.previousPagePath}
+          pageNumber={currentPage}
+        />
       </div>
       {/* pagniation */}
-      <Pagination
-        numberOfPages={pageContext.numberOfPages}
-        nextPagePath={pageContext.nextPagePath}
-        previousPagePath={pageContext.previousPagePath}
-        pageNumber={currentPage}
-      />
     </Layout>
   )
 }

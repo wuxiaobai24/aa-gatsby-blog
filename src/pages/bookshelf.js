@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 
-import axios from "axios"
+// import axios from "axios"
 
-import StarIcon from "../images/star.svg"
-import YellowStarIcon from "../images/yellow-star.svg"
+// import StarIcon from "../images/star.svg"
+// import YellowStarIcon from "../images/yellow-star.svg"
 
-const StarRating = ({ rating }) => {
-  const arr = Array(rating.max).fill(true).fill(false, parseInt(rating.value))
-  return (
-    <div className="inline-block">
-      {arr.map((flag, index) =>
-        flag ? (
-          <YellowStarIcon className="inline w-5 h-5" key={index} />
-        ) : (
-          <StarIcon className="inline w-5 h-5" key={index} />
-        )
-      )}
-    </div>
-  )
-}
+// const StarRating = ({ rating }) => {
+//   const arr = Array(rating.max).fill(true).fill(false, parseInt(rating.value))
+//   return (
+//     <div className="inline-block">
+//       {arr.map((flag, index) =>
+//         flag ? (
+//           <YellowStarIcon className="inline w-5 h-5" key={index} />
+//         ) : (
+//           <StarIcon className="inline w-5 h-5" key={index} />
+//         )
+//       )}
+//     </div>
+//   )
+// }
 
 export default () => {
   return (
     <Layout>
+      <SEO
+        title="Bookshelf"
+        description="wuxiaobai24's bookshelf"
+        meta={[{ name: "referrer", content: "never" }]}
+      />
       <div className="box">
         <div className="content">
           <p className="title">Book 模块暂时停用。</p>

@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/page-layout"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { TagList } from "../components/tags"
 
@@ -20,6 +20,7 @@ export default ({ data }) => {
     <Layout>
       <SEO title="Tags" />
       {/* <div className="post-header-tags">{tags}</div> */}
+
       <div className="box">
         <TagList tags={tags} />
       </div>
