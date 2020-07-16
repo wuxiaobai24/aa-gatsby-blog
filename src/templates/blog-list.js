@@ -14,12 +14,12 @@ export default ({ data, pageContext }) => {
     )
   })
   const currentPage = pageContext.humanPageNumber
-  const seoTitle = `${pageContext.tag ? 'Tag ' + pageContext.tag : 'Archive'} #${currentPage} page`
+  const seoTitle = `${
+    pageContext.tag ? "Tag " + pageContext.tag : "Archive"
+  } #${currentPage} page`
   return (
     <Layout>
-      <SEO title={seoTitle} 
-          description={seoTitle} />
-      />
+      <SEO title={seoTitle} description={seoTitle} />
       <div className="card-container">{posts}</div>
       {/* pagniation */}
       <div className="flex flex-center justify-between mx-auto">

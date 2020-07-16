@@ -1,9 +1,9 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import "../style/style.scss"
 
-import MenuIcon from "../images/menu.svg"
-import { PresignedPost } from "aws-sdk/clients/s3"
+// import MenuIcon from "../images/menu.svg"
+// import { PresignedPost } from "aws-sdk/clients/s3"
 
 const NavbarItem = ({ url, children }) => (
   <Link to={url} className="navbar-item is-capitalize">
@@ -14,7 +14,7 @@ const NavbarItem = ({ url, children }) => (
 const NavbarBurger = ({ isActive, toggleMenu }) => (
   <button
     onClick={toggleMenu}
-    className={`button navbar-burger ${isActive ? "is-active" : ""}`}
+    className={`button navbar-burger mt-2 mr-2 ${isActive ? "is-active" : ""}`}
   >
     <span />
     <span />
@@ -33,7 +33,10 @@ const NavBar = ({ links }) => {
     <nav className="navbar is-space">
       <div className="navbar-brand">
         <NavbarItem url="/">
-          <span style={{ fontFamily: "Annie Use Your Telescope" }}>
+          <span
+            className="is-size-1"
+            style={{ fontFamily: "Annie Use Your Telescope" }}
+          >
             CODE & FUN
           </span>
         </NavbarItem>
@@ -42,7 +45,7 @@ const NavBar = ({ links }) => {
           toggleMenu={() => setIsActive(!isActive)}
         />
       </div>
-      <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+      <div className={`navbar-menu  ${isActive ? "is-active" : ""}`}>
         <div className="navbar-end">{linklist}</div>
       </div>
     </nav>
