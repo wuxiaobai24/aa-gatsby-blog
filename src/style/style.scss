@@ -7,8 +7,9 @@
 
 // bulma comflicts with prism.js
 // fix the problem
-.content .tag,
-.content .number {
+.token.tag,
+.token.content,
+.token.number {
   display: inline;
   padding: inherit;
   font-size: inherit;
