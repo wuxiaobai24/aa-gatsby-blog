@@ -17,19 +17,13 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-git`,
       options: {
         name: "post",
-        path: `${__dirname}/content/posts`,
+        remote: "https://github.com/wuxiaobai24/blog.git",
+        patterns: `posts/**`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: "leetcode",
-    //     path: `${__dirname}/content/leetcode`,
-    //   },
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
