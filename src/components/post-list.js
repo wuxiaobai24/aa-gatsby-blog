@@ -3,7 +3,6 @@ import { TagList } from "./tags"
 import { Link } from "gatsby"
 
 const PostItem = ({ slug, title, date, excerpt, tags }) => {
-  console.log(date)
   return (
     <div className="box">
       <article className="media">
