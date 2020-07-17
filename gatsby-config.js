@@ -20,7 +20,7 @@ module.exports = {
       resolve: `gatsby-source-git`,
       options: {
         name: "post",
-        remote: "https://github.com/wuxiaobai24/blog.git",
+        remote: `https://wuxiaobai24:${process.env.BLOG_GITHUB_TOKEN}@github.com/wuxiaobai24/blog.git`,
         patterns: `posts/**`,
       },
     },
