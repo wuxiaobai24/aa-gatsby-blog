@@ -17,13 +17,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const baseSlug = createFilePath({
       node,
       getNode,
-      basePath: "content/posts",
+      basePath: "",
       trailingSlash: false,
     })
     const postDate = moment(node.frontmatter.date)
     const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${slugFunc(
       baseSlug
     )}/`
+    console.log(slug, baseSlug)
     createNodeField({
       node,
       name: "slug",
@@ -59,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query {
-      allMdx (filter: {fields: {source: {eq: "post"}}}) {
+      allMdx(filter: { fields: { source: { eq: "post" } } }) {
         totalCount
         edges {
           node {

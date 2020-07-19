@@ -21,7 +21,8 @@ module.exports = {
       options: {
         name: "post",
         remote: `https://wuxiaobai24:${process.env.BLOG_GITHUB_TOKEN}@github.com/wuxiaobai24/blog.git`,
-        patterns: `posts/**`,
+        // patterns: [`*.md`, `*.mdx`],
+        // local: `content/`,
       },
     },
     `gatsby-transformer-sharp`,
