@@ -19,13 +19,39 @@ export default function BlogPost({ data }) {
     <Layout>
       <SEO title={title} description={excerpt} />
       <div className="container">
-        <PostHeader className="box" date={date} title={title} tags={tags} slug={slug} />
+        <PostHeader
+          className="box"
+          date={date}
+          title={title}
+          tags={tags}
+          slug={slug}
+        />
         <div className="box">
           <div className="content">
             <MDXRenderer>{post.body}</MDXRenderer>
+            <blockquote cite={url}>
+              <p>
+                作者：<a href="https://github.com/wuxiaobai24">wuxiaobai24</a>
+              </p>
+              <p>发表日期：{new Date(date).toLocaleDateString()}</p>
+              <p>
+                本文首发地址：<a href={url}>{title}</a>
+              </p>
+              <p>
+                版权声明：
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  CC BY NC SA 4.0
+                </a>
+              </p>
+            </blockquote>
           </div>
         </div>
-        <Comment className="container" url={url} title={title} identifier={slug} />
+        <Comment
+          className="container"
+          url={url}
+          title={title}
+          identifier={slug}
+        />
       </div>
     </Layout>
   )
