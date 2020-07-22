@@ -1,16 +1,34 @@
 import React from "react"
 import { TagList } from "./tags"
 import { Link } from "gatsby"
+import { slugfunc } from "./utils"
 
-const PostItem = ({ slug, title, date, excerpt, tags }) => {
+const PostItem = ({ slug, title, date, excerpt, tags, categories }) => {
+  console.log(categories)
   return (
     <div className="box">
       <article className="media">
         <div className="media-content">
           <div className="content">
-            <p className="title">{title}</p>
-
-            <p className="subtitle">{new Date(date).toLocaleDateString()}</p>
+            <div className="level">
+              <div className="level-left">
+                <div className="level-item title">{title}</div>
+              </div>
+              <div className="level-right">
+                <div className="level-right">
+                  <div className="level-item tags has-addons">
+                    <span className="tag is-light">
+                      <Link to={`/category/${slugfunc(categories[0])}`}>
+                        {categories}
+                      </Link>
+                    </span>
+                    <span className="tag is-primary">
+                      {new Date(date).toLocaleDateString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div>
               <p>{excerpt}</p>
@@ -41,7 +59,7 @@ const PostItem = ({ slug, title, date, excerpt, tags }) => {
 }
 
 const PostList = ({ posts }) => {
-  return posts.map(({ slug, title, date, excerpt, tags }) => (
+  return posts.map(({ slug, title, date, excerpt, tags, categories }) => (
     <PostItem
       key={slug}
       slug={slug}
@@ -49,6 +67,7 @@ const PostList = ({ posts }) => {
       date={date}
       excerpt={excerpt}
       tags={tags}
+      categories={categories}
     />
   ))
 }

@@ -31,12 +31,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
 
-    const { tags } = node.frontmatter
+    const { tags, categories } = node.frontmatter
     const sortTags = tags.map(slugFunc)
     createNodeField({
       node,
       name: "sortTags",
       value: sortTags,
+    })
+    const sortCategories = categories.map(slugFunc)
+    createNodeField({
+      node,
+      name: "sortCategories",
+      value: sortCategories,
     })
     const fileNode = getNode(node.parent)
     createNodeField({
@@ -57,6 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
   const blogListTemplate = path.resolve("./src/templates/blog-list.js")
   const tagTemplate = path.resolve(`./src/templates/tag-blog-list.js`)
+  const categoryTemplate = path.resolve(`./src/templates/category-blog-list.js`)
 
   const result = await graphql(`
     query {
@@ -79,11 +86,21 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        categories: group(field: fields___sortCategories) {
+          fieldValue
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
       }
     }
   `)
   const posts = result.data.allMdx.edges
-  const { tags } = result.data.allMdx
+  const { tags, categories } = result.data.allMdx
 
   const postPerPage = 6
 
@@ -104,9 +121,22 @@ exports.createPages = async ({ graphql, actions }) => {
       component: tagTemplate,
       items: edges,
       itemsPerPage: postPerPage,
-      pathPrefix: `/tags/${fieldValue}`,
+      pathPrefix: `/tag/${fieldValue}`,
       context: {
         tag: fieldValue,
+      },
+    })
+  })
+
+  categories.forEach(({ fieldValue, edges }) => {
+    paginate({
+      createPage: createPage,
+      component: categoryTemplate,
+      items: edges,
+      itemsPerPage: postPerPage,
+      pathPrefix: `/category/${fieldValue}`,
+      context: {
+        category: fieldValue,
       },
     })
   })

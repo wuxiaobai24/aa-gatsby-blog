@@ -13,18 +13,10 @@ export default ({ data, pageContext }) => {
       date: node.frontmatter.date,
       excerpt: node.excerpt,
       tags: node.frontmatter.tags,
+      categories: node.frontmatter.categories
     }
   })
-  // const posts = data.allMdx.edges.map(({ node }) => {
-  //   const slug = node.fields.slug
-  //   const title = node.frontmatter.title
-  //   return (
-  //     <Link className="card-item" key={slug} to={slug}>
-  //       {title}
-  //     </Link>
-  //   )
-  // })
-  // console.log(pageContext)
+
   const currentPage = pageContext.humanPageNumber
   const seoTitle = `${
     pageContext.tag ? "Tag " + pageContext.tag : "Archive"
@@ -63,6 +55,7 @@ export const query = graphql`
             title
             date
             tags
+            categories
           }
           excerpt(pruneLength: 200)
         }
