@@ -22,18 +22,40 @@ const NavbarBurger = ({ isActive, toggleMenu }) => (
   </button>
 )
 
+const NavBarLinkFunc = ({ type, url, name, icon, items }) => {
+  if (type === "menu") {
+    return (
+      <div className="navbar-item is-capitalize has-dropdown is-hoverable" key={name} >
+        <a className="navbar-link" href="#menu">
+          {icon && (
+            <span className="icon">
+              <i className={icon}></i>
+            </span>
+          )}
+          <span>{name}</span>
+        </a>
+
+        <div className="navbar-dropdown">{items.map(NavBarLinkFunc)}</div>
+      </div>
+    )
+  } else {
+    return (
+      <NavbarItem url={url} key={name}>
+        {icon && (
+          <span className="icon">
+            <i className={icon}></i>
+          </span>
+        )}
+        <span>{name}</span>
+      </NavbarItem>
+    )
+  }
+}
+
 const NavBar = ({ links }) => {
   const [isActive, setIsActive] = React.useState(false)
-  const linklist = links.map(({ url, name, icon }) => (
-    <NavbarItem url={url} key={url}>
-      {icon && (
-        <span className="icon">
-          <i className={icon}></i>
-        </span>
-      )}
-      <span>{name}</span>
-    </NavbarItem>
-  ))
+
+  const linklist = links.map(NavBarLinkFunc)
   return (
     <nav className="navbar is-transparent is-space has-shadow">
       <div className="container">

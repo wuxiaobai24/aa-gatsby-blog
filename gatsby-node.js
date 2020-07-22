@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${slugFunc(
       baseSlug
     )}/`
-    console.log(slug, baseSlug)
+    // console.log(slug, baseSlug)
     createNodeField({
       node,
       name: "slug",

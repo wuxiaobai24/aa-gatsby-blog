@@ -18,6 +18,7 @@ export const query = graphql`
           frontmatter {
             title
             date
+            categories
             tags
           }
           excerpt(pruneLength: 200)

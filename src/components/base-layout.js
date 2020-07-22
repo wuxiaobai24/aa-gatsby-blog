@@ -18,11 +18,17 @@ import NavBar from "./nav"
 
 const Layout = ({ children, cards }) => {
   const links = [
-    { url: "/", name: "Home", icon: "fas fa-home" },
-    { url: "/archive", name: "Archive", icon: "fas fa-archive" },
-    { url: "/tags/", name: "Tags", icon: "fas fa-tags" },
-    { url: "/bookshelf/", name: "Books", icon: "fas fa-book" },
-    { url: "/about", name: "About", icon: "fas fa-user" },
+    { type: "item", url: "/", name: "Home", icon: "fas fa-home" },
+    { type: "item", url: "/archive", name: "Archive", icon: "fas fa-archive" },
+    { type: "item", url: "/tags/", name: "Tags", icon: "fas fa-tags" },
+    { type: "menu", url: "#", name: "Categories", icon: "fas fa-boxes", items: [
+      { type: "item", url: "/category/blog", name: "Blog", icon: "fas fa-star" },
+      { type: "item", url: "/category/life", name: "Life", icon: "fas fa-headphones" },
+      
+      // { type: "item", url: "/category/leetcode", name: "LeetCode", icon: "fas fa-code" },
+    ] },
+    { type: "item", url: "/bookshelf/", name: "Books", icon: "fas fa-book" },
+    { type: "item", url: "/about", name: "About", icon: "fas fa-user" },
   ]
 
   return (
