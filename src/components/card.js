@@ -22,7 +22,7 @@ export default ({ title, icon, children }) => {
   const [isActive, setIsActive] = useState(true)
 
   return (
-    <div className="card">
+    <div className="card mb-4">
       <header className="card-header">
         <p className="card-header-title">
           <span className="icon">
