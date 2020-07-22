@@ -11,7 +11,7 @@ import "katex/dist/katex.min.css"
 
 export default function BlogPost({ data }) {
   const post = data.mdx
-  const { title, tags, date, excerpt } = post.frontmatter
+  const { title, tags, date, excerpt, categories } = post.frontmatter
   const slug = post.fields.slug
   const url = data.site.siteMetadata.siteUrl + slug
 
@@ -25,6 +25,7 @@ export default function BlogPost({ data }) {
           title={title}
           tags={tags}
           slug={slug}
+          categories={categories}
         />
         <div className="box">
           <div className="content">
@@ -71,6 +72,7 @@ export const query = graphql`
         title
         tags
         date
+        categories
       }
       fields {
         slug
