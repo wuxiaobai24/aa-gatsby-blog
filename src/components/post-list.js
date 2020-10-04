@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import { slugfunc } from "./utils"
 
 const PostItem = ({ slug, title, date, excerpt, tags, categories }) => {
-  console.log(categories)
   return (
     <div className="box">
       <article className="media">
