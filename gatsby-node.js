@@ -20,9 +20,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       basePath: "",
       trailingSlash: false,
     })
+    const baseSlugArr = baseSlug.split('/')
+    
     const postDate = moment(node.frontmatter.date)
     const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${slugFunc(
-      baseSlug
+      baseSlugArr[baseSlugArr.length - 1]
     )}/`
     // console.log(slug, baseSlug)
     createNodeField({

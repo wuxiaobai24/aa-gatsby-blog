@@ -25,7 +25,7 @@ const Layout = ({ children, cards }) => {
       { type: "item", url: "/category/blog", name: "Blog", icon: "fas fa-star" },
       { type: "item", url: "/category/life", name: "Life", icon: "fas fa-headphones" },
       
-      // { type: "item", url: "/category/leetcode", name: "LeetCode", icon: "fas fa-code" },
+      { type: "item", url: "/category/leetcode", name: "LeetCode", icon: "fas fa-code" },
     ] },
     { type: "item", url: "/bookshelf/", name: "Books", icon: "fas fa-book" },
     { type: "item", url: "/about", name: "About", icon: "fas fa-user" },
