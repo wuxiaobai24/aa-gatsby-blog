@@ -21,12 +21,33 @@ const Layout = ({ children, cards }) => {
     { type: "item", url: "/", name: "Home", icon: "fas fa-home" },
     { type: "item", url: "/archive", name: "Archive", icon: "fas fa-archive" },
     { type: "item", url: "/tags/", name: "Tags", icon: "fas fa-tags" },
-    { type: "menu", url: "#", name: "Categories", icon: "fas fa-boxes", items: [
-      { type: "item", url: "/category/blog", name: "Blog", icon: "fas fa-star" },
-      { type: "item", url: "/category/life", name: "Life", icon: "fas fa-headphones" },
-      
-      { type: "item", url: "/category/leetcode", name: "LeetCode", icon: "fas fa-code" },
-    ] },
+    {
+      type: "menu",
+      url: "#",
+      name: "Categories",
+      icon: "fas fa-boxes",
+      items: [
+        {
+          type: "item",
+          url: "/category/blog",
+          name: "Blog",
+          icon: "fas fa-star",
+        },
+        {
+          type: "item",
+          url: "/category/life",
+          name: "Life",
+          icon: "fas fa-headphones",
+        },
+
+        {
+          type: "item",
+          url: "/category/leetcode",
+          name: "LeetCode",
+          icon: "fas fa-code",
+        },
+      ],
+    },
     { type: "item", url: "/bookshelf/", name: "Books", icon: "fas fa-book" },
     { type: "item", url: "/about", name: "About", icon: "fas fa-user" },
   ]
@@ -35,10 +56,15 @@ const Layout = ({ children, cards }) => {
     <>
       <NavBar links={links} />
       {children}
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
       {/* footer */}
       <footer className="footer">
         <div className="content has-text-centered">
+          <p>
+            <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次 本站访客数
+              <span id="busuanzi_value_site_uv"></span>人次
+            </span>
+          </p>
           <p>
             Design by wuxiaobai24. Power by{" "}
             <a href="https://www.gatsbyjs.org/">Gatsby.js</a>. The website
@@ -52,7 +78,6 @@ const Layout = ({ children, cards }) => {
             You can find the source code in{" "}
             <a href="https://github.com/wuxiaobai24/aa-gatsby-blog">Github</a>.
           </p>
-          <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
         </div>
       </footer>
     </>
