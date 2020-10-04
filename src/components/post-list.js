@@ -12,7 +12,10 @@ const PostItem = ({ slug, title, date, excerpt, tags, categories }) => {
           <div className="content">
             <div className="level">
               <div className="level-left">
-                <div className="level-item title">{title}</div>
+                {/* <div className="level-item title">{title}</div> */}
+                <Link to={slug} className="level-item title">
+                  {title}
+                </Link>
               </div>
               <div className="level-right">
                 <div className="level-right">
