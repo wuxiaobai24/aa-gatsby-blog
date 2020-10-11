@@ -68,7 +68,15 @@ module.exports = {
             },
           },
           // for code highlight
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: {
+                'c++': 'cpp',
+                'c+=': 'cpp'
+              }
+            }
+          }
           // for latex
           `gatsby-remark-katex`,
           // for copy file
