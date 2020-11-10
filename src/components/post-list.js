@@ -13,7 +13,7 @@ const PostItem = ({ slug, title, date, excerpt, tags, categories }) => {
             <div className="level">
               <div className="level-left">
                 {/* <div className="level-item title">{title}</div> */}
-                <Link to={slug} className="level-item title">
+                <Link to={slug} className="level-item title" style={{maxWidth: "800px"}}>
                   {title}
                 </Link>
               </div>

@@ -75,7 +75,6 @@ function SEO({ description, lang, meta, title }) {
         integrity="sha512-9BwLAVqqt6oFdXohPLuNHxhx36BVj5uGSGmizkmGkgl3uMSgNalKc/smum+GJU/TTP0jy0+ruwC3xNAk3F759A=="
         crossorigin="anonymous"
       />
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     </Helmet>
   )
 }

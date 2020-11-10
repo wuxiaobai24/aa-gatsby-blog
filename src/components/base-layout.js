@@ -46,6 +46,12 @@ const Layout = ({ children, cards }) => {
           name: "LeetCode",
           icon: "fas fa-code",
         },
+        {
+          type: "item",
+          url: "/category/papers",
+          name: "Papers",
+          icon: "fas fa-book"
+        }
       ],
     },
     { type: "item", url: "/bookshelf/", name: "Books", icon: "fas fa-book" },
@@ -59,12 +65,6 @@ const Layout = ({ children, cards }) => {
       {/* footer */}
       <footer className="footer">
         <div className="content has-text-centered">
-          <p>
-            <span id="busuanzi_container_site_pv">
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次 本站访客数
-              <span id="busuanzi_value_site_uv"></span>人次
-            </span>
-          </p>
           <p>
             Design by wuxiaobai24. Power by{" "}
             <a href="https://www.gatsbyjs.org/">Gatsby.js</a>. The website
