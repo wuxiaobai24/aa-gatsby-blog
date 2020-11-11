@@ -76,7 +76,7 @@ module.exports = {
                 'c+=': 'cpp'
               }
             }
-          }
+          },
           // for latex
           `gatsby-remark-katex`,
           // for copy file
