@@ -61,11 +61,17 @@ module.exports = {
           default: require.resolve("./src/components/page-layout.js"),
         },
         gatsbyRemarkPlugins: [
+          // {
+            // resolve: `gatsby-remark-images`,
+            // options: {
+              // maxWidth: 600,
+            // },
+          // },
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-anywhere`,
             options: {
-              maxWidth: 600,
-            },
+              staticDir: `static`,
+            }
           },
           // for code highlight
           {
