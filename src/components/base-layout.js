@@ -42,7 +42,7 @@ const Layout = ({ children, cards }) => {
 
         {
           type: "item",
-          url: "/category/leetcode",
+          url: "https://algo.codeand.fun",
           name: "LeetCode",
           icon: "fas fa-code",
         },

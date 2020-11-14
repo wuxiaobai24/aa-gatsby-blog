@@ -17,7 +17,7 @@ export default () => {
 			<div className="field has-addons">
 				<div className="control has-icons-left is-expanded">
 					<input type="text" className="input is-hovered" placeholder="Search Anything"
-						onChange={e => setQuery(`site:https://codeand.fun ${e.target.value}`)}
+						onChange={e => setQuery(`site:https://codeand.fun/posts ${e.target.value}`)}
 					/>
 					<Icon icon="fa fa-search" iconClassName={"is-small is-left"} />
 				</div>
