@@ -19,8 +19,8 @@ const PostItem = ({ slug, title, date, excerpt, tags, categories }) => {
               <div className="level-right">
                 <div className="level-right">
                   <div className="level-item tags has-addons">
-                    <span className="tag is-light">
-                      <Link to={`/category/${slugfunc(categories[0])}`}>
+                    <span className="tag is-dark">
+                      <Link to={`/category/${slugfunc(categories[0])}`} className="has-text-white">
                         {categories}
                       </Link>
                     </span>

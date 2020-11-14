@@ -8,11 +8,13 @@
 
 // create slug ,sortTags fields
 const { createFilePath } = require("gatsby-source-filesystem")
-const limax = require("limax")
 const moment = require("moment")
+const limax = require("limax")
+const slugFunc = (slug) => limax(slug, {tone: false});
+
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
-  const slugFunc = slug => limax(slug, { tone: false })
   if (node.internal.type == "Mdx") {
     const baseSlug = createFilePath({
       node,
@@ -21,7 +23,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       trailingSlash: false,
     })
     const baseSlugArr = baseSlug.split('/')
-    
+
     const postDate = moment(node.frontmatter.date)
     const slug = `/posts/${postDate.format("YYYY/MM/DD")}/${slugFunc(
       baseSlugArr[baseSlugArr.length - 1]
