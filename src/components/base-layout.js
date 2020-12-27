@@ -63,6 +63,7 @@ const Layout = ({ children, cards }) => {
       <NavBar links={links} />
       {children}
       {/* footer */}
+      
       <footer className="footer">
         <div className="content has-text-centered">
           <p>
@@ -80,6 +81,9 @@ const Layout = ({ children, cards }) => {
           </p>
         </div>
       </footer>
+      {/* <!-- Cloudflare Web Analytics --> */}
+      <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e3dfcc0037ab41eeb3abca37ef3ad0d1"}'></script>
+      {/* <!-- End Cloudflare Web Analytics --> */}
     </>
   )
 }
