@@ -54,7 +54,7 @@ const Layout = ({ children, cards }) => {
         }
       ],
     },
-    { type: "item", url: "/bookshelf/", name: "Books", icon: "fas fa-book" },
+    { type: "item", url: "https://www.notion.so/wuxiaobai24/d39c32ef6d3c4d65808eebc80c1bd852?v=0f4f8b6618b3415caf01ef510c8ffd6c", name: "Books", icon: "fas fa-book" },
     { type: "item", url: "/about", name: "About", icon: "fas fa-user" },
   ]
 
