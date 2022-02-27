@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
+import MdXLayout from "../components/mdx-layout"
 import PostHeader from "../components/post-header"
 import Comment from "../components/comment"
 
@@ -29,7 +29,9 @@ export default function BlogPost({ data }) {
         />
         <div className="box">
           <div className="content">
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <MdXLayout>
+              <MDXRenderer>{post.body}</MDXRenderer>
+            </MdXLayout>
             <blockquote cite={url}>
               <p>
                 作者：<a href="https://github.com/wuxiaobai24">wuxiaobai24</a>
