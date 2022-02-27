@@ -60,6 +60,8 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/components/page-layout.js"),
         },
+        remarkPlugins: [require("remark-math")],
+        // rehypePlugins: [require("rehype-katex")],
         gatsbyRemarkPlugins: [
           // {
             // resolve: `gatsby-remark-images`,
@@ -83,8 +85,6 @@ module.exports = {
               }
             }
           },
-          // for latex
-          `gatsby-remark-katex`,
           // for copy file
           `gatsby-remark-copy-linked-files`,
           // purcecss

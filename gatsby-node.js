@@ -9,9 +9,9 @@
 // create slug ,sortTags fields
 const { createFilePath } = require("gatsby-source-filesystem")
 const moment = require("moment")
-const slug = require(`slug`)
-const slugFunc = (s) => slug(s);
-
+const limax = require("limax")
+const slugFunc = (s) => limax(s, { tone: false });
+const tagSlugFunc = (name) => name;
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -36,13 +36,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     })
 
     const { tags, categories } = node.frontmatter
-    const sortTags = tags.map(slugFunc)
+    const sortTags = tags.map(tagSlugFunc)
     createNodeField({
       node,
       name: "sortTags",
       value: sortTags,
     })
-    const sortCategories = categories.map(slugFunc)
+    const sortCategories = categories.map(tagSlugFunc)
     createNodeField({
       node,
       name: "sortCategories",
