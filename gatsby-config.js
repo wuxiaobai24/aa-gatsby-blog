@@ -81,7 +81,9 @@ module.exports = {
             options: {
               aliases: {
                 'c++': 'cpp',
-                'c+=': 'cpp'
+                'c+=': 'cpp',
+                "sh": "bash",
+                "gradle": "groovy",
               }
             }
           },
