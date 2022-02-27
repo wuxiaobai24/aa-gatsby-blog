@@ -67,12 +67,12 @@ module.exports = {
               // maxWidth: 600,
             // },
           // },
-          {
-            resolve: `gatsby-remark-images-anywhere`,
-            options: {
-              staticDir: `static`,
-            }
-          },
+          // {
+          //   resolve: `gatsby-remark-images-anywhere`,
+          //   options: {
+          //     staticDir: `static`,
+          //   }
+          // },
           // for code highlight
           {
             resolve: `gatsby-remark-prismjs`,
@@ -105,7 +105,7 @@ module.exports = {
       resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
-          include: /images/,
+          include: /svg/,
         },
       },
     },
@@ -117,7 +117,7 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     {
-      resolve: `gatsby-plugin-feed-mdx`,
+      resolve: `gatsby-plugin-feed`,
       options: {
         query: `
         {

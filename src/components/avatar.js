@@ -1,25 +1,23 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Img from "gatsby-image"
+import {GatsbyImage} from "gatsby-plugin-image"
 
 export default ({ imgClassName }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "avatar.jpeg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   `)
 
   return (
-    <Img
+    <GatsbyImage
       className={imgClassName}
-      fluid={data.file.childImageSharp.fluid}
+      image={data.file.childImageSharp.gatsbyImageData}
       alt="Avater"
     />
   )

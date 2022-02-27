@@ -1,7 +1,8 @@
-import limax from "limax"
+// import limax from "limax"
+import slug from "slug"
 
 const colorlist = ["primary", "link", "info", "success", "warning", "danger"]
-const slugfunc = name => limax(name, { tone: false })
+const slugfunc = name => slug(name)
 const hashfunc = s => {
   return s.split("").reduce(function (a, b) {
     a = (a << 5) - a + b.charCodeAt(0)

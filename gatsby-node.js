@@ -9,8 +9,8 @@
 // create slug ,sortTags fields
 const { createFilePath } = require("gatsby-source-filesystem")
 const moment = require("moment")
-const limax = require("limax")
-const slugFunc = (slug) => limax(slug, {tone: false});
+const slug = require(`slug`)
+const slugFunc = (s) => slug(s);
 
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -154,3 +154,16 @@ exports.createPages = async ({ graphql, actions }) => {
     pathPrefix: `/archive`,
   })
 }
+
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//   actions.setWebpackConfig({
+//     // https://dev.to/arisa_dev/gatsby-storyblok-can-t-resolve-fs-in-x-4f4m
+//     // node: {
+//     //   fs: "empty",
+//     // },
+//     // https://github.com/webpack/webpack/issues/11600
+//     resolve: {
+//       fallback: { "path": require.resolve("path-browserify") }
+//     }
+//   })
+// }
