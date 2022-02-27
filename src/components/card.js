@@ -18,7 +18,7 @@ const ShowIcon = ({ isShow, toggleShowIcon }) => (
   </button>
 )
 
-export default ({ title, icon, children }) => {
+const Card =  ({ title, icon, children }) => {
   const [isActive, setIsActive] = useState(true)
 
   return (
@@ -39,3 +39,4 @@ export default ({ title, icon, children }) => {
     </div>
   )
 }
+export default Card;

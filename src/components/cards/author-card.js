@@ -2,7 +2,7 @@ import React from "react"
 import Avatar from "../avatar"
 import Icon from "../icon"
 
-export default () => {
+const author =  () => {
   const socials = [
     { icon: "fab fa-lg fa-github", url: "https://github.com/wuxiaobai24" },
     { icon: "fas fa-lg fa-envelope-open", url: "wuxiaobai24:wuxiaobai24@foxmail.com" },
@@ -23,3 +23,4 @@ export default () => {
     </div>
   )
 }
+export default author;

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Icon from './icon'
 
-export default () => {
+const Search =  () => {
 	const [query, setQuery] = useState("");
 	return (
 		<form
@@ -25,3 +25,4 @@ export default () => {
 		</form>
 	)
 }
+export default Search;

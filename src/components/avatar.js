@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import {GatsbyImage} from "gatsby-plugin-image"
 
-export default ({ imgClassName }) => {
+const Avatar =  ({ imgClassName }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "avatar.jpeg" }) {
@@ -22,3 +22,5 @@ export default ({ imgClassName }) => {
     />
   )
 }
+
+export default Avatar;

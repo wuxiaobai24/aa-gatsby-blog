@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 
 import { TagList } from "../components/tags"
 import { slugfunc } from "./utils"
-export default ({ title, tags, date, slug, categories }) => {
+const PostHeader = ({ title, tags, date, slug, categories }) => {
   // const taglist = tags.map(tag => (
   //   <Link to={`/tags/${slugfunc(tag)}`} className="post-header-tagitem">
   //     {tag}
@@ -38,3 +38,5 @@ export default ({ title, tags, date, slug, categories }) => {
     </div>
   )
 }
+
+export default PostHeader;

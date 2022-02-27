@@ -1,11 +1,11 @@
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import React from "react"
 import BaseLayout from "../components/base-layout"
 import SearchBar from "../components/search"
-export default () => {
+const IndexPage =  () => {
   return (
     <BaseLayout>
-      <SEO title="Home" />
+      <Seo title="Home" />
       <section className="hero is-fullheight-with-navbar">
         <div className="hero-body">
           <div className="container">
@@ -21,3 +21,5 @@ export default () => {
     </BaseLayout>
   )
 }
+
+export default IndexPage;

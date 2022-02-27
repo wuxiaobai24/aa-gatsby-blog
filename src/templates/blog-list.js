@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { PostList } from "../components/post-list"
 import Pagination from "../components/pagination"
 
-export default ({ data, pageContext }) => {
+const BlogList = ({ data, pageContext }) => {
   const posts = data.allMdx.edges.map(({ node }) => {
     return {
       slug: node.fields.slug,
@@ -23,7 +23,7 @@ export default ({ data, pageContext }) => {
   } #${currentPage} page`
   return (
     <Layout>
-      <SEO title={seoTitle} description={seoTitle} />
+      <Seo title={seoTitle} description={seoTitle} />
       <div className="container">
         <PostList posts={posts} />
         <Pagination
@@ -63,3 +63,4 @@ export const query = graphql`
     }
   }
 `
+export default BlogList;

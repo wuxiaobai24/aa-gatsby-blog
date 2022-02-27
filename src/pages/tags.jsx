@@ -2,10 +2,10 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { TagList } from "../components/tags"
 
-export default ({ data }) => {
+const Tags =  ({ data }) => {
   // const slugFunc = tag => limax(tag, { tone: false })
   // const tags = data.allMdx.tags.map(({ fieldValue, totalCount }) => {
   //   const slug = slugFunc(fieldValue)
@@ -18,7 +18,7 @@ export default ({ data }) => {
   const tags = data.allMdx.tags.map(({ fieldValue }) => fieldValue)
   return (
     <Layout>
-      <SEO title="Tags" />
+      <Seo title="Tags" />
       {/* <div className="post-header-tags">{tags}</div> */}
 
       <div className="box">
@@ -38,3 +38,4 @@ export const query = graphql`
     }
   }
 `
+export default Tags;

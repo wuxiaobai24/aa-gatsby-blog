@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import PostHeader from "../components/post-header"
@@ -17,7 +17,7 @@ export default function BlogPost({ data }) {
 
   return (
     <Layout>
-      <SEO title={title} description={excerpt} />
+      <Seo title={title} description={excerpt} />
       <div className="container">
         <PostHeader
           className="box"

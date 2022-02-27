@@ -1,7 +1,7 @@
 import React from "react"
 import { Disqus } from "gatsby-plugin-disqus"
 
-export default ({ url, title, identifier, className }) => {
+const Comment = ({ url, title, identifier, className }) => {
   const [loadDisqus, setLoadDisqus] = React.useState(false)
 
   return (
@@ -22,3 +22,4 @@ export default ({ url, title, identifier, className }) => {
     </div>
   )
 }
+export default Comment;
